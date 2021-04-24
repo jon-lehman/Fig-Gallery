@@ -47,8 +47,8 @@ function getImage(imageId) {
 }
 
 firebase.database().ref("refresh").on("value", function(snapshot) {
-  retrieveImageFromFigma(imageId)
-  async function retrieveImageFromFigma(imageId) {
+  retrieveImageFromFigma(globalImageId)
+  async function retrieveImageFromFigma(globalImageId) {
     let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + globalImageId + '&scale=4', {
       method: 'GET',
       headers: {
