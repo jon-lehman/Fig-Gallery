@@ -38,10 +38,12 @@ function getImage(imageId) {
   }); 
 }
 
+/*
 // Trigger get image on refresh action
 firebase.database().ref("refresh").on("value", function(snapshot) {
   retrieveImageFromFigma(globalImageId)
 });
+*/
 
 // Get figma frame image based on file id
 async function retrieveImageFromFigma(imageId) {
