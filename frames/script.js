@@ -56,6 +56,6 @@ firebase.database().ref("refresh").on("value", function(snapshot) {
       }
     })
     let imageData = await result.json()
-    document.getElementById('frame').style.backgroundImage = "url('"+imageData.images[globalImageId];+"')";
+    document.getElementById('frame').style.backgroundImage = "url('"+imageData.images[imageId];+"')";
   };
 })
