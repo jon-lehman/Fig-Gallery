@@ -29,7 +29,7 @@ function getImage(imageId) {
     else if (snapshot.val() === "customURL") {}
     
     firebase.database().ref("refresh").on("value", function(snapshot) {
-      location.reload();
+      retrieveImageFromFigma(figmaId);
     })
     
     /*
