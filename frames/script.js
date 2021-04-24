@@ -30,6 +30,8 @@ function getImage(imageId) {
     else if (snapshot.val() === "private2") {var figmaId = "vona8hJ5C08si3tTez8NtH"}
     else if (snapshot.val() === "customURL") {}
 
+    retrieveImageFromFigma(imageId)
+
     // Get figma frame image based on file id
     async function retrieveImageFromFigma(imageId) {
       let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + imageId + '&scale=4', {
@@ -45,6 +47,7 @@ function getImage(imageId) {
 }
 
 firebase.database().ref("refresh").on("value", function(snapshot) {
+  retrieveImageFromFigma(imageId)
   async function retrieveImageFromFigma(imageId) {
     let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + globalImageId + '&scale=4', {
       method: 'GET',
