@@ -26,10 +26,21 @@ function getImage(imageId) {
     else if (snapshot.val() === "public2") {var figmaId = "SJ8BCokNHOkNVHZLXDVWTR"}
     else if (snapshot.val() === "private1") {var figmaId = "UEhvAqV0cJxo5KmfwXlsIx"}
     else if (snapshot.val() === "private2") {var figmaId = "vona8hJ5C08si3tTez8NtH"}
+    else if (snapshot.val() === "customURL") {}
     
     firebase.database().ref("refresh").on("value", function(snapshot) {
-      retrieveImageFromFigma(imageId);
+      retrieveImageFromFigma(figmaId);
     })
+
+    /*
+    firebase.database().ref("refresh").on("value", function(snapshot) {
+      if (snapshot.val() === "public1") {retrieveImageFromFigma("LWtmUmFrIK40eNQ5hUmlGG")}
+      else if (snapshot.val() === "public2") {retrieveImageFromFigma("SJ8BCokNHOkNVHZLXDVWTR")}
+      else if (snapshot.val() === "private1") {retrieveImageFromFigma("UEhvAqV0cJxo5KmfwXlsIx")}
+      else if (snapshot.val() === "private2") {retrieveImageFromFigma("vona8hJ5C08si3tTez8NtH")}
+      else if (snapshot.val() === "customURL") {}
+    })
+    */
 
     // Get figma frame image based on file id
     async function retrieveImageFromFigma(imageId) {
