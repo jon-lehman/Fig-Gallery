@@ -14,14 +14,17 @@ firebase.initializeApp(firebaseConfig);
 // Set Figma API defaults
 const figmaApiKey = "52858-877a7444-a96c-4d42-af87-f3ace5984cf2"
 var figmaId = ""
-var globalImageId = ""
+var imageId = ""
 
+// on start trigger Get Image and set variables
 function getImage(imageId) {
-  var globalImageId = imageId
+  var imageId = imageId
+
   // Look in Firebase for set Figma File
   var figmaFileRef = firebase.database().ref("figmafile")
   figmaFileRef.on("value", function(snapshot) {
 
+    // console log new figma file value from db
     console.log(snapshot.val());
 
     if (snapshot.val() === "public1") {var figmaId = "LWtmUmFrIK40eNQ5hUmlGG"}
@@ -30,32 +33,24 @@ function getImage(imageId) {
     else if (snapshot.val() === "private2") {var figmaId = "vona8hJ5C08si3tTez8NtH"}
     else if (snapshot.val() === "customURL") {}
 
+    // Trigger get image based on db
     retrieveImageFromFigma(imageId)
-
-    // Get figma frame image based on file id
-    async function retrieveImageFromFigma(imageId) {
-      let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + imageId + '&scale=4', {
-        method: 'GET',
-        headers: {
-          'X-Figma-Token': figmaApiKey
-        }
-      })
-      let imageData = await result.json()
-      document.getElementById('frame').style.backgroundImage = "url('"+imageData.images[imageId];+"')";
-    };
   }); 
 }
 
+// Trigger get image on refresh action
 firebase.database().ref("refresh").on("value", function(snapshot) {
-  retrieveImageFromFigma(globalImageId)
-  async function retrieveImageFromFigma(globalImageId) {
-    let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + globalImageId + '&scale=4', {
-      method: 'GET',
-      headers: {
-        'X-Figma-Token': figmaApiKey
-      }
-    })
-    let imageData = await result.json()
-    document.getElementById('frame').style.backgroundImage = "url('"+imageData.images[imageId];+"')";
-  };
-})
+  retrieveImageFromFigma(imageId)
+});
+
+// Get figma frame image based on file id
+async function retrieveImageFromFigma(imageId) {
+  let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + imageId + '&scale=4', {
+    method: 'GET',
+    headers: {
+      'X-Figma-Token': figmaApiKey
+    }
+  })
+  let imageData = await result.json()
+  document.getElementById('frame').style.backgroundImage = "url('"+imageData.images[imageId];+"')";
+};
