@@ -18,7 +18,7 @@ var globalImageId = ""
 
 // on start trigger Get Image and set variables
 function getImage(imageId) {
-  var globalImageId = imageId
+  globalImageId = imageId
 
   // Look in Firebase for set Figma File
   var figmaFileRef = firebase.database().ref("figmafile")
@@ -27,10 +27,10 @@ function getImage(imageId) {
     // console log new figma file value from db
     console.log(snapshot.val());
 
-    if (snapshot.val() === "public1") {var figmaId = "LWtmUmFrIK40eNQ5hUmlGG"}
-    else if (snapshot.val() === "public2") {var figmaId = "SJ8BCokNHOkNVHZLXDVWTR"}
-    else if (snapshot.val() === "private1") {var figmaId = "UEhvAqV0cJxo5KmfwXlsIx"}
-    else if (snapshot.val() === "private2") {var figmaId = "vona8hJ5C08si3tTez8NtH"}
+    if (snapshot.val() === "public1") {figmaId = "LWtmUmFrIK40eNQ5hUmlGG"}
+    else if (snapshot.val() === "public2") {figmaId = "SJ8BCokNHOkNVHZLXDVWTR"}
+    else if (snapshot.val() === "private1") {figmaId = "UEhvAqV0cJxo5KmfwXlsIx"}
+    else if (snapshot.val() === "private2") {figmaId = "vona8hJ5C08si3tTez8NtH"}
     else if (snapshot.val() === "customURL") {}
 
     // Trigger get image based on db
@@ -40,12 +40,10 @@ function getImage(imageId) {
 
 console.log("figmaId", figmaId)
 
-/*
 // Trigger get image on refresh action
 firebase.database().ref("refresh").on("value", function(snapshot) {
   retrieveImageFromFigma(globalImageId)
 });
-*/
 
 // Get figma frame image based on file id
 async function retrieveImageFromFigma(imageId) {
