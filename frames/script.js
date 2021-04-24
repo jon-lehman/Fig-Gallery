@@ -38,6 +38,8 @@ function getImage(imageId) {
   }); 
 }
 
+console.log("figmaId", figmaId)
+
 /*
 // Trigger get image on refresh action
 firebase.database().ref("refresh").on("value", function(snapshot) {
@@ -46,7 +48,7 @@ firebase.database().ref("refresh").on("value", function(snapshot) {
 */
 
 // Get figma frame image based on file id
-async function retrieveImageFromFigma(imageId) {
+function retrieveImageFromFigma(imageId) {
   let result = await fetch('https://api.figma.com/v1/images/' + figmaId + '?ids=' + imageId + '&scale=4', {
     method: 'GET',
     headers: {
