@@ -14,11 +14,11 @@ firebase.initializeApp(firebaseConfig);
 // Set Figma API defaults
 const figmaApiKey = "52858-877a7444-a96c-4d42-af87-f3ace5984cf2"
 var figmaId = ""
-var imageId = ""
+var globalImageId = ""
 
 // on start trigger Get Image and set variables
 function getImage(imageId) {
-  var imageId = imageId
+  var globalImageId = imageId
 
   // Look in Firebase for set Figma File
   var figmaFileRef = firebase.database().ref("figmafile")
@@ -40,7 +40,7 @@ function getImage(imageId) {
 
 // Trigger get image on refresh action
 firebase.database().ref("refresh").on("value", function(snapshot) {
-  retrieveImageFromFigma(imageId)
+  retrieveImageFromFigma(globalImageId)
 });
 
 // Get figma frame image based on file id
