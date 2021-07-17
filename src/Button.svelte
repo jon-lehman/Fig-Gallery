@@ -49,7 +49,9 @@
         </svg>
     {/if}
     {label}
+    <!--
     {#if frame1Matched}<p>1</p>{/if}
     {#if frame2Matched}<p>2</p>{/if}
     {#if frame3Matched}<p>3</p>{/if}
+    -->
 </div>
