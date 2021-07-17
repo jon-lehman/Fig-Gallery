@@ -24,6 +24,18 @@ module.exports = {
                 'to-pink-300',
                 'to-purple-800',
                 'to-yellow-500',
+
+                'border-blue-300',
+                'border-green-300',
+                'border-purple-300',
+
+                'ring-blue-300',
+                'ring-green-300',
+                'ring-purple-300',
+
+                'text-blue-500',
+                'text-green-500',
+                'text-purple-500',
             ],
         }
     },
