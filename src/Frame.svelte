@@ -99,6 +99,7 @@
         sketchfabID = frameSourceContent
         setTimeout(function(){
             let iframe = document.getElementById('sketchfabWindow').contentDocument
+            console.log(iframe)
             iframe.querySelector(".viewer-hint").style.display = "none"
             document.getElementById('sketchfabWindow').click()
             console.log('clicked')
@@ -106,44 +107,56 @@
     }
 </script>
 
+<svelte:head>
+  <title>Office Gallery Frame</title>
+</svelte:head>
+
 <Data bind:data="{data}"/>
-<div class="absolute bottom-0">
-    <p>source content {frameSourceContent}</p>
-    <p>source type {frameSourceType}</p>
-    <p>brightness {frameBrightness}</p>
-    <p>contrast {frameContrast}</p>
-    <p>gray scale {frameGrayScale}</p>
-    <p>hue rotation {frameHueRotate}</p>
-    <p>saturation {frameSaturation}</p>
+
+
+<div class="wrapper" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%)">
+
+    {#if frameSourceType === "figma"}
+        <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
+    {:else if frameSourceType === "image"}
+        <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({imageUrl})"></div>
+    {:else if frameSourceType === "video"}
+        <video class="w-screen h-screen object-cover object-center" autoplay loop muted>
+            <source src={videoUrl} type="video/mp4" />
+            <source src={videoUrl} type="video/ogg" />
+            <source src={videoUrl} type="video/webm" />
+        </video>
+    {:else if frameSourceType === "iframe"}
+        <iframe title="Website Showcase" 
+            src={iframeUrl}
+            frameborder="0"
+            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+            height="100%"
+            width="100%">
+        </iframe>
+    {:else if frameSourceType === "sketchfab"}
+        <iframe title="Sketchfab embed"
+            id="sketchfabWindow"
+            frameborder="0"
+            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+            allowfullscreen
+            allow="fullscreen; autoplay;"
+            src="https://sketchfab.com/models/{sketchfabID}/embed?autospin=1&autostart=1&camera=0&ui_hint=0"> 
+        </iframe>
+    {:else}
+        <p>frame source wrong</p>
+    {/if}
+
 </div>
 
-{#if frameSourceType === "figma"}
-    <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
-{:else if frameSourceType === "image"}
-    <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({imageUrl})"></div>
-{:else if frameSourceType === "video"}
-    <video class="w-screen h-screen" autoplay loop muted>
-        <source src={videoUrl} type="video/mp4" />
-        <source src={videoUrl} type="video/ogg" />
-        <source src={videoUrl} type="video/webm" />
-    </video>
-{:else if frameSourceType === "iframe"}
-    <iframe title="Website Showcase" 
-        src={iframeUrl}
-        frameborder="0"
-        style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
-        height="100%"
-        width="100%">
-    </iframe>
-{:else if frameSourceType === "sketchfab"}
-    <iframe title="Sketchfab embed"
-        id="sketchfabWindow"
-        frameborder="0"
-        style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
-        allowfullscreen
-        allow="fullscreen; autoplay;"
-        src="https://sketchfab.com/models/{sketchfabID}/embed?autospin=1&autostart=1&camera=0&ui_hint=0"> 
-    </iframe>
-{:else}
-    <p>frame source wrong</p>
-{/if}
+<!--
+    <div class="absolute bottom-0">
+        <p>source content {frameSourceContent}</p>
+        <p>source type {frameSourceType}</p>
+        <p>brightness {frameBrightness}</p>
+        <p>contrast {frameContrast}</p>
+        <p>gray scale {frameGrayScale}</p>
+        <p>hue rotation {frameHueRotate}</p>
+        <p>saturation {frameSaturation}</p>
+    </div>
+-->

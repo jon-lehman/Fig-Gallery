@@ -127,6 +127,7 @@
 </style>
 
 <svelte:head>
+  <title>Office Gallery Controller</title>
   <!-- Google Fonts (IBM Plex Sans)-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +176,7 @@
       <SliderControl label={"Contrast"} id={"contrast"} bind:value={contrast} bind:selectedFrames={selectedFrames} />
       <SliderControl label={"Saturation"} id={"saturation"} bind:value={saturation} bind:selectedFrames={selectedFrames} />
       <SliderControl label={"Grayscale"} id={"grayScale"} bind:value={grayscale} max={100} bind:selectedFrames={selectedFrames} />
-      <SliderControl label={"Hue"} bind:value={hue} id={"hueRotate"} max={100} bind:selectedFrames={selectedFrames} />
+      <SliderControl label={"Hue"} bind:value={hue} id={"hueRotate"} max={360} bind:selectedFrames={selectedFrames} />
       <Button label={"Reset Adjustments"} figma={false} on:buttonClicked="{resetAdjustments}" />
     </div>
   
