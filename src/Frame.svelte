@@ -97,6 +97,7 @@
     // Define and retrieve sketchfab ID
     $: if (frameSourceType === "sketchfab") {
         sketchfabID = frameSourceContent
+        /*
         setTimeout(function(){
             let iframe = document.getElementById('sketchfabWindow').contentDocument
             console.log(iframe)
@@ -104,6 +105,7 @@
             document.getElementById('sketchfabWindow').click()
             console.log('clicked')
         }, 8000);
+        */
     }
 </script>
 
@@ -114,7 +116,7 @@
 <Data bind:data="{data}"/>
 
 
-<div class="wrapper" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%)">
+<div class="wrapper w-screen h-screen" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%)">
 
     {#if frameSourceType === "figma"}
         <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
@@ -136,11 +138,8 @@
         </iframe>
     {:else if frameSourceType === "sketchfab"}
         <iframe title="Sketchfab embed"
-            id="sketchfabWindow"
-            frameborder="0"
+        frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share 
             style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
-            allowfullscreen
-            allow="fullscreen; autoplay;"
             src="https://sketchfab.com/models/{sketchfabID}/embed?autospin=1&autostart=1&camera=0&ui_hint=0"> 
         </iframe>
     {:else}
