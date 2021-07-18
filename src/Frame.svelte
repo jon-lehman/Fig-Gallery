@@ -119,11 +119,11 @@
 <div class="wrapper w-screen h-screen" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%)">
 
     {#if frameSourceType === "figma"}
-        <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
+        <div class="w-screen max-w-screen h-screen max-h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
     {:else if frameSourceType === "image"}
         <div class="w-screen h-screen bg-cover bg-center" style="background-image: url({imageUrl})"></div>
     {:else if frameSourceType === "video"}
-        <video class="w-screen h-screen object-cover object-center" autoplay loop muted>
+        <video class="w-screen max-w-sreen h-screen max-h-screen object-cover object-center" autoplay loop muted>
             <source src={videoUrl} type="video/mp4" />
             <source src={videoUrl} type="video/ogg" />
             <source src={videoUrl} type="video/webm" />
