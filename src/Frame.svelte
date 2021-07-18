@@ -14,6 +14,7 @@
     let frameGrayScale;
     let frameHueRotate;
     let frameSaturation;
+    let frameInvert;
 
     // Define Figma Defaults
     let figmaToken = "210457-300eb6ab-c9b5-44de-b892-bdc6fa5a14ac";
@@ -40,6 +41,7 @@
                     frameGrayScale = data.frames[i].adjustments.grayScale;
                     frameHueRotate = data.frames[i].adjustments.hueRotate;
                     frameSaturation = data.frames[i].adjustments.saturation;
+                    frameInvert = data.frames[i].adjustments.invert;
                 }
             }
         }
@@ -116,7 +118,7 @@
 <Data bind:data="{data}"/>
 
 
-<div class="wrapper w-screen h-screen" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%)">
+<div class="wrapper w-screen h-screen" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
 
     {#if frameSourceType === "figma"}
         <div class="w-screen max-w-screen h-screen max-h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
