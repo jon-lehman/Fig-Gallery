@@ -26,6 +26,7 @@
   let saturation = [100]
   let grayscale = [0]
   let hue = [0]
+  let invert = [0]
 
   // Handle frame selection
   $: frame1Selected, updateFrames(1, frame1Selected)
@@ -85,6 +86,7 @@
   $: saturation, updateAdjustment('saturation', saturation)
   $: grayscale, updateAdjustment('grayScale', grayscale)
   $: hue, updateAdjustment('hueRotate', hue)
+  $: invert, updateAdjustment('invert', invert)
   function updateAdjustment(type, value) {
     if (data !== undefined) {
       for (var sfi = 0; sfi < selectedFrames.length; sfi++) { 
@@ -108,6 +110,7 @@
             data.frames[di].adjustments.grayScale = 0;
             data.frames[di].adjustments.hueRotate = 0;
             data.frames[di].adjustments.saturation = 100;
+            data.frames[di].adjustments.invert = 0;
           }
         }
       }
@@ -177,6 +180,7 @@
       <SliderControl label={"Saturation"} id={"saturation"} bind:value={saturation} bind:selectedFrames={selectedFrames} />
       <SliderControl label={"Grayscale"} id={"grayScale"} bind:value={grayscale} max={100} bind:selectedFrames={selectedFrames} />
       <SliderControl label={"Hue"} bind:value={hue} id={"hueRotate"} max={360} bind:selectedFrames={selectedFrames} />
+      <SliderControl label={"Invert"} bind:value={invert} id={"invert"} max={100} bind:selectedFrames={selectedFrames} />
       <Button label={"Reset Adjustments"} figma={false} on:buttonClicked="{resetAdjustments}" />
     </div>
   
