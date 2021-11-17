@@ -117,12 +117,8 @@
 
 <Data bind:data="{data}"/>
 
-<style>
-    :global(body) {background-color: black}
-</style>
 
-
-<div class="wrapper w-screen h-screen pr-12 pt-12" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
+<div class="wrapper w-screen h-screen pr-10 pt-10 bg-black" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
 
     {#if frameSourceType === "figma"}
         <div class="w-full max-w-sreen h-full max-h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
@@ -138,14 +134,14 @@
         <iframe title="Website Showcase" 
             src={iframeUrl}
             frameborder="0"
-            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;padding-top:3rem; padding-right:3rem;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
             height="100%"
             width="100%">
         </iframe>
     {:else if frameSourceType === "sketchfab"}
         <iframe title="Sketchfab embed"
         frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share 
-            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;padding-top:3rem; padding-right:3rem;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
             src="https://sketchfab.com/models/{sketchfabID}/embed?autospin=1&autostart=1&camera=0&ui_hint=0"> 
         </iframe>
     {:else}
