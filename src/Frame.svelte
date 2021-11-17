@@ -117,8 +117,12 @@
 
 <Data bind:data="{data}"/>
 
+<style>
+    :global(body) {background-color: black}
+</style>
 
-<div class="wrapper w-screen h-screen" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
+
+<div class="wrapper w-screen h-screen mr-12 mt-12" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
 
     {#if frameSourceType === "figma"}
         <div class="w-screen max-w-screen h-screen max-h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
