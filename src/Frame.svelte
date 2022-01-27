@@ -118,7 +118,7 @@
 <Data bind:data="{data}"/>
 
 
-<div class="wrapper w-screen h-screen pr-10 pt-10 bg-black" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
+<div class="wrapper w-screen h-screen pr-8 pt-10 bg-black" style="filter: brightness({frameBrightness}%) contrast({frameContrast}%) grayscale({frameGrayScale}%) hue-rotate({frameHueRotate}deg) saturate({frameSaturation}%) invert({frameInvert}%)">
 
     {#if frameSourceType === "figma"}
         <div class="w-full max-w-sreen h-full max-h-screen bg-cover bg-center" style="background-image: url({figmaImage})"></div>
@@ -134,9 +134,10 @@
         <iframe title="Website Showcase" 
             src={iframeUrl}
             frameborder="0"
-            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+            style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;max-height:100vh;"
             height="100%"
-            width="100%">
+            width="100%"
+        >
         </iframe>
     {:else if frameSourceType === "sketchfab"}
         <iframe title="Sketchfab embed"
