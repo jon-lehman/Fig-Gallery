@@ -21,18 +21,28 @@
     $: data, matchFrames();
     function matchFrames() {
         if (data) {
-            for (var sfi = 0; sfi < selectedFrames.length; sfi++) {
-                // if selected frame has type that matches id
-                if (data.frames[sfi].source.type === id) {
-                    if (data.frames[sfi].id === 1) { frame1Matched = true}
-                    else if (data.frames[sfi].id === 2) { frame2Matched = true}
-                    else if (data.frames[sfi].id === 3) { frame3Matched = true}
-                    else if (data.frames[sfi].id === 4) { frame4Matched = true}
-                } else if (data.frames[sfi].source.type !== "figma" && id == "customUrl" ) {
-                    if (data.frames[sfi].id === 1) { frame1Matched = true}
-                    else if (data.frames[sfi].id === 2) { frame2Matched = true}
-                    else if (data.frames[sfi].id === 3) { frame3Matched = true}
-                    else if (data.frames[sfi].id === 4) { frame4Matched = true}
+            // Reset matches
+            frame1Matched = false;
+            frame2Matched = false;
+            frame3Matched = false;
+            frame4Matched = false;
+            
+            // Loop through all frames in data
+            for (var di = 0; di < data.frames.length; di++) {
+                // Check if this frame is selected
+                if (selectedFrames.includes(data.frames[di].id)) {
+                    // Check if selected frame has type that matches id
+                    if (data.frames[di].source.type === id) {
+                        if (data.frames[di].id === 1) { frame1Matched = true}
+                        else if (data.frames[di].id === 2) { frame2Matched = true}
+                        else if (data.frames[di].id === 3) { frame3Matched = true}
+                        else if (data.frames[di].id === 4) { frame4Matched = true}
+                    } else if (data.frames[di].source.type !== "figma" && id == "customUrl" ) {
+                        if (data.frames[di].id === 1) { frame1Matched = true}
+                        else if (data.frames[di].id === 2) { frame2Matched = true}
+                        else if (data.frames[di].id === 3) { frame3Matched = true}
+                        else if (data.frames[di].id === 4) { frame4Matched = true}
+                    }
                 }
             }
         }

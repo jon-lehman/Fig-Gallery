@@ -15,11 +15,11 @@
 
     $: data, getAdjustmentValue()
     function getAdjustmentValue() {
-      if (data) {
-        frame1Value = data.frames[0].adjustments[id]
-        frame2Value = data.frames[1].adjustments[id]
-        frame3Value = data.frames[2].adjustments[id]
-        frame4Value = data.frames[3].adjustments[id]
+      if (data && data.frames) {
+        if (data.frames[0]) frame1Value = data.frames[0].adjustments[id]
+        if (data.frames[1]) frame2Value = data.frames[1].adjustments[id]
+        if (data.frames[2]) frame3Value = data.frames[2].adjustments[id]
+        if (data.frames[3]) frame4Value = data.frames[3].adjustments[id]
       }
     }
 
