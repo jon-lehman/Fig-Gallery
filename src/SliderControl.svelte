@@ -5,6 +5,7 @@
     let frame1Value = 100
     let frame2Value = 100
     let frame3Value = 100
+    let frame4Value = 100
     export let min = 0;
     export let max = 200;
     export let value = [100]
@@ -18,6 +19,7 @@
         frame1Value = data.frames[0].adjustments[id]
         frame2Value = data.frames[1].adjustments[id]
         frame3Value = data.frames[2].adjustments[id]
+        frame4Value = data.frames[3].adjustments[id]
       }
     }
 
@@ -61,6 +63,9 @@
       {/if}
       {#if selectedFrames.includes(3)}
         <p class="text-purple-400">{frame3Value}</p>
+      {/if}
+      {#if selectedFrames.includes(4)}
+        <p class="text-pink-400">{frame4Value}</p>
       {/if}
     </div>
     <!--<p>{value}</p>-->

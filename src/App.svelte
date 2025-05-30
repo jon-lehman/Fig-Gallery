@@ -24,6 +24,8 @@
   <Frame frameID={2} />
 {:else if page === "frame3"}
   <Frame frameID={3} />
+{:else if page === "frame4"}
+  <Frame frameID={4} />
 {:else}
   <Controller />
 {/if}

@@ -54,18 +54,22 @@
             if (frameID === 1) {figmaNode = "1:7"}
             else if (frameID === 2) {figmaNode = "1:35"}
             else if (frameID === 3) {figmaNode = "1:40"}
+            else if (frameID === 4) {figmaNode = "1717:2"}
         } else if (frameSourceContent === "bravo") {
             if (frameID === 1) {figmaNode = "1:52"}
             else if (frameID === 2) {figmaNode = "1:80"}
             else if (frameID === 3) {figmaNode = "1:85"}
+            else if (frameID === 4) {figmaNode = "1717:4"}
         } else if (frameSourceContent === "charlie") {
             if (frameID === 1) {figmaNode = "1:97"}
             else if (frameID === 2) {figmaNode = "1:125"}
             else if (frameID === 3) {figmaNode = "1:130"}
+            else if (frameID === 4) {figmaNode = "1717:6"}
         } else if (frameSourceContent === "delta") {
             if (frameID === 1) {figmaNode = "1:142"}
             else if (frameID === 2) {figmaNode = "1:170"}
             else if (frameID === 3) {figmaNode = "1:175"}
+            else if (frameID === 4) {figmaNode = "1717:8"}
         }
         getImage()
     }

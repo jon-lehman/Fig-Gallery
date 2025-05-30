@@ -11,6 +11,7 @@
     let frame1Matched = false;
     let frame2Matched = false;
     let frame3Matched = false;
+    let frame4Matched = false;
 
     function buttonClicked() {
         dispatch('buttonClicked');
@@ -26,10 +27,12 @@
                     if (data.frames[sfi].id === 1) { frame1Matched = true}
                     else if (data.frames[sfi].id === 2) { frame2Matched = true}
                     else if (data.frames[sfi].id === 3) { frame3Matched = true}
+                    else if (data.frames[sfi].id === 4) { frame4Matched = true}
                 } else if (data.frames[sfi].source.type !== "figma" && id == "customUrl" ) {
                     if (data.frames[sfi].id === 1) { frame1Matched = true}
                     else if (data.frames[sfi].id === 2) { frame2Matched = true}
                     else if (data.frames[sfi].id === 3) { frame3Matched = true}
+                    else if (data.frames[sfi].id === 4) { frame4Matched = true}
                 }
             }
         }

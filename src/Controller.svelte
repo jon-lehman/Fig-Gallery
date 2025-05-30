@@ -20,6 +20,7 @@
   let frame1Selected = true;
   let frame2Selected = true;
   let frame3Selected = true;
+  let frame4Selected = true;
   let activeTab
   let brightness = [100]
   let contrast = [100]
@@ -32,6 +33,7 @@
   $: frame1Selected, updateFrames(1, frame1Selected)
   $: frame2Selected, updateFrames(2, frame2Selected)
   $: frame3Selected, updateFrames(3, frame3Selected)
+  $: frame4Selected, updateFrames(4, frame4Selected)
   function updateFrames(frameNumber, selected) {
     if (selected === true) {
       selectedFrames.push(frameNumber)
@@ -159,6 +161,7 @@
       <FrameSelector frameNumber={1} frameColor={"blue"} bind:selected={frame1Selected}/>
       <FrameSelector frameNumber={2} frameColor={"green"} bind:selected={frame2Selected}/>
       <FrameSelector frameNumber={3} frameColor={"purple"} bind:selected={frame3Selected}/>
+      <FrameSelector frameNumber={4} frameColor={"pink"} bind:selected={frame4Selected}/>
     </div>
   </div>
   
